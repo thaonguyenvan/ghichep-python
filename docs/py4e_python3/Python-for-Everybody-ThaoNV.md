@@ -244,3 +244,148 @@ Comment trong python được bắt đầu bằng `#` :
 # compute the percentage of the hour that has elapsed
 percentage = (minute * 100) / 60
 ```
+
+## Chapter 3 Conditional execution
+
+### 3.1 Boolean expressions
+
+`True` và `False` là những giá trị đặc biệt, chúng không phải string
+
+Các comparison operators:
+
+x !=y         # x không bằng y
+x > y         # x lớn hơn y
+x < y         # x nhỏ hơn y
+x >= y        # x lớn hơn hoặc bằng y
+x <= y        # x nhỏ hơn hoặc bằng y
+x is y        # x bằng y
+x is not y    # x không bằng y
+
+### 3.2 Logical operators
+
+`and, or, and not`
+
+`x > 0 and x < 10` là True nếu x > 0 và nhỏ hon 10
+
+`n%2 == 0 or n%3 == 0` là true nếu một trong 2 true
+
+`not (x > y)` là true nếu `x>y` là false
+
+### 3.3 Conditional execution
+
+``` python
+if x > 0 :
+    print('x is positive')
+```
+
+Nếu điều kiện true thì nó sẽ thực hiện câu lệnh phía sau dấu `:`. Số lượng câu lệnh sau dấu `:` là không giơi hạn, trong trường hợp bạn muốn bỏ qua, hãy sử dụng pass:
+
+``` python
+if x < 0 :
+    pass
+```
+
+### 3.4 Alternative execution
+
+``` python
+if x%2 == 0 :
+    print('x is even')
+else :
+    print('x is odd')
+```
+
+### 3.5 Chained conditionals
+
+``` python
+if x < y:
+    print('x is less than y')
+elif x > y:
+    print('x is greater than y')
+else:
+    print('x and y are equal')
+```
+
+### 3.6 Nested conditionals
+
+``` python
+if x == y:
+    print('x and y are equal')
+else:
+    if x < y:
+        print('x is less than y')
+    else:
+        print('x is greater than y')
+```
+
+### 3.7 Catching exceptions using try and except
+
+Ý tưởng của `try / except` đó là nếu bạn nghĩ rằng có một phần nào đó trong code có thể gây lỗi và bạn muốn thêm một vài câu lệnh để thay thế trong trường hợp lỗi xảy ra. Những câu lệnh được thêm vào này sẽ không được thực thi nếu không có lỗi nào xảy ra
+
+``` python
+inp = input('Enter Fahrenheit Temperature:')
+try:
+    fahr = float(inp)
+    cel = (fahr - 32.0) * 5.0 / 9.0
+    print(cel)
+except:
+    print('Please enter a number')
+```
+
+Đầu tiên python sẽ thực thi câu lệnh trong block `try`. Nếu có `exceptions` thì python sẽ thực thi câu lệnh trong block `except`
+
+## 4. Iteration
+
+### 4.1 Updating variables
+
+Bạn phải định nghĩa biến trước rồi mới có thể update biến
+
+``` python
+>>> x = 0
+>>> x = x + 1
+```
+
+### 4.2 The while statement
+
+``` python
+n = 5
+while n > 0:
+    print(n)
+    n = n - 1
+print('Blastoff!')
+```
+
+Workflow:
+
+1. Kiểm tra điều kiện (True hay False)
+
+2. Nếu điều kiện false, thoát khỏ vòng lặp và thực hiện câu lệnh tiếp theo
+
+3. Nếu điều kiện true, thực thi phần body của vòng lặp và quay lại bước 1
+
+### 4.3 “Infinite loops” and break and continue
+
+``` python
+while True:
+    line = input('> ')
+    if line[0] == '#':
+        continue
+    if line == 'done':
+        break
+    print(line)
+print('Done!')
+```
+
+`continue` sẽ không thực hiện tiếp những câu lệnh trong phần thân của vòng lặp nữa mà sẽ quay lại check lại điều kiện.
+
+`break` sẽ thoát hẳn khỏi vòng lặp.
+
+### 4.4 Definite loops using for
+
+`for` là kiểu vòng lặp thường được dùng cho một set (có thể là list bao gồm các từ hoặc số).
+
+``` python
+friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print('Happy New Year:', friend)
+print('Done!')
+```
