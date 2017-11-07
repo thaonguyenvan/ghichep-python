@@ -389,3 +389,214 @@ for friend in friends:
     print('Happy New Year:', friend)
 print('Done!')
 ```
+
+## Chapter 8 Lists
+
+### 8.1 A list is a sequence
+
+Giống string, list là tập hợp một số giá trị tuy nhiên các giá trị này có thể thuộc bất cứ loại nào.
+
+Có một cài cách để khai báo một list, cách đơn giản nhất đó là khai báo các phần tử trong dấu ngoặc vuông, bạn cũng có thể khai báo list lồng nhau và list trống.
+
+``` python
+>>> cheeses = ['Cheddar', 'Edam', 'Gouda']
+>>> numbers = [17, 123]
+>>> empty = []
+>>> print(cheeses, numbers, empty)
+['Cheddar', 'Edam', 'Gouda'] [17, 123] []
+```
+
+Bạn cũng có thể sử dụng `list()` để khai báo một list trống
+
+### 8.2 Lists are mutable
+
+Cách lấy dữ liệu của list giống với string . Tuy nhiên bạn có thể thay đổi thứ tự trong list hoặc thay đổi giá trị củ chúng.
+
+### 8.3 Traversing a list
+
+Cách phổ biến nhất để traverse một list đó là dùng for. Nếu bạn muốn thay đổi phần tử thì bạn cần dùng thêm indices.
+
+``` python
+for i in range(len(numbers)):
+  numbers[i] = numbers[i] * 2
+```
+
+### 8.4 List operations
+
+``` python
+>>> a = [1, 2, 3]
+>>> b = [4, 5, 6]
+>>> c = a + b
+>>> print(c)
+[1, 2, 3, 4, 5, 6]
+```
+
+``` python
+>>> [0] * 4
+[0, 0, 0, 0]
+>>> [1, 2, 3] * 3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+```
+
+### 8.5 List slices
+
+``` python
+>>> t = ['a', 'b', 'c', 'd', 'e', 'f']
+>>> t[1:3]
+['b', 'c']
+>>> t[:4]
+['a', 'b', 'c', 'd']
+>>> t[3:]
+['d', 'e', 'f']
+```
+
+Nếu bạn khai báo phần tử đầu tiên, nó sẽ bắt đầu từ đó, phần tử thứ 2 được khai báo sẽ là điểm trước khi kết thúc (trước đó 1 phần tử)
+
+### 8.6 List methods
+
+`append` để thêm phần tử vào List
+
+``` python
+>>> t = ['a', 'b', 'c']
+>>> t.append('d')
+>>> print(t)
+['a', 'b', 'c', 'd']
+```
+
+`extends` để thêm list vào list khác
+
+``` python
+>>> t1 = ['a', 'b', 'c']
+>>> t2 = ['d', 'e']
+>>> t1.extend(t2)
+>>> print(t1)
+['a', 'b', 'c', 'd', 'e']
+```
+
+`sort` để sắp xếp các phần tử từ thấp tới cao
+
+``` python
+>>> t = ['d', 'c', 'e', 'b', 'a']
+>>> t.sort()
+>>> print(t)
+['a', 'b', 'c', 'd', 'e']
+```
+
+### 8.7 Deleting elements
+
+`pop` để xóa phần tử khi bạn biết chính xác index của nó
+
+``` python
+>>> t = ['a', 'b', 'c']
+>>> x = t.pop(1)
+>>> print(t)
+['a', 'c']
+>>> print(x)
+b
+```
+
+`pop` sẽ giữ lại phần tử vừa bị loại bỏ. Nếu bạn không cần nó, hãy sử dụng `del`
+
+``` python
+>>> t = ['a', 'b', 'c']
+>>> del t[1]
+>>> print(t)
+['a', 'c']
+```
+
+Nếu bạn biết giá trị muốn loại bỏ (không cần index), hãy dùng remove
+
+``` python
+>>> t = ['a', 'b', 'c']
+>>> t.remove('b')
+>>> print(t)
+['a', 'c']
+```
+
+Nếu bạn muốn loại bỏ nhiều hơn 1 phần tử, sử dụng `del` với `slice` index
+
+### 8.8 Lists and functions
+
+Có rất nhiều builr-int functions mà bạn có thể dùng sẵn
+
+``` python
+>>> nums = [3, 41, 12, 9, 74, 15]
+>>> print(len(nums))
+6
+>>> print(max(nums))
+74
+>>> print(min(nums))
+3
+>>> print(sum(nums))
+154
+>>> print(sum(nums)/len(nums))
+25
+```
+
+``` python
+total = 0
+count = 0
+while (True):
+    inp = input('Enter a number: ')
+    if inp == 'done': break
+    value = float(inp)
+    total = total + value
+    count = count + 1
+average = total / count
+print('Average:', average)
+```
+
+### 8.9 Lists and strings
+
+Chuyển đổi từ string sang list
+
+``` python
+>>> s = 'spam'
+>>> t = list(s)
+>>> print(t)
+['s', 'p', 'a', 'm']
+```
+
+Nếu bạn muốn bẻ string thành các từ riêng biệt, sử dụng `split`
+
+``` python
+>>> s = 'pining for the fjords'
+>>> t = s.split()
+>>> print(t)
+['pining', 'for', 'the', 'fjords']
+>>> print(t[2])
+the
+```
+
+Khi sử dụng `split`, bạn sẽ biến string thành list các từ. Bạn có thể sử dụng nó với `delimiter` để kahi báo kí hiệu được loại bỏ
+
+``` python
+>>> s = 'spam-spam-spam'
+>>> delimiter = '-'
+>>> s.split(delimiter)
+['spam', 'spam', 'spam']
+```
+
+`join` sẽ có chức năng ngược lại với `split`
+
+``` python
+>>> t = ['pining', 'for', 'the', 'fjords']
+>>> delimiter = ' '
+>>> delimiter.join(t)
+'pining for the fjords'
+```
+
+### 8.10 Parsing lines
+
+Chương trình tìm kiếm dòng bắt đầu với "From" và in từ thứ 3 ra màn hình
+
+``` python
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith('From '): continue
+    words = line.split()
+    print(words[2])
+```
+
+### 8.11 Objects and values
