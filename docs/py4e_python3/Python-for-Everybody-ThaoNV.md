@@ -599,4 +599,138 @@ for line in fhand:
     print(words[2])
 ```
 
-### 8.11 Objects and values
+## 9. Chapter 4 Functions
+
+### 9.1 Type conversion functions
+
+Một số functions dùng để ép kiểu
+
+``` python
+>>> int(3.99999)
+3
+>>> int(-2.3)
+-2
+>>> str(32)
+'32'
+```
+
+### 9.2 Random numbers
+
+Function tạo random number từ 0.0 tới 1.0
+
+``` python
+import random
+for i in range(10):
+x = random.random()
+print(x)
+
+#sample output
+0.11132867921152356
+```
+
+Function cho ra số bất kì trong khoảng khai báo
+
+``` python
+>>> random.randint(5, 10)
+5
+>>> random.randint(5, 10)
+9
+>>> t = [1, 2, 3]
+>>> random.choice(t)
+2
+>>> random.choice(t)
+3
+```
+
+### 9.3 Math functions
+
+Python có một math module cung cấp một số các functions tính toán thông dụng
+
+Trước khi sử sụng cần import nó
+
+``` python
+>>> import math
+
+>>> ratio = signal_power / noise_power
+>>> decibels = 10 * math.log10(ratio)
+>>> radians = 0.7
+>>> height = math.sin(radians)
+
+>>> math.sqrt(2) / 2.0
+0.7071067811865476
+```
+
+### 9.4 Adding new functions
+
+Một function mới cần có tên và một chuỗi các câu lệnh
+
+``` python
+def print_lyrics():
+print("I'm a lumberjack, and I'm okay.")
+print('I sleep all night and I work all day.')
+```
+
+`def` là keyword để khai báo một function mới (function definition). Bạn không thể lấy những keyword để khai báo tên function.
+
+Việc định nghĩa một function sẽ tạo ra một biến với cùng tên.
+
+``` python
+>>> print(print_lyrics)
+<function print_lyrics at 0xb7e99e9c>
+>>> print(type(print_lyrics))
+<class 'function'>
+```
+
+Một khi bạn đã định nghĩa ra một function, bạn có thể sử dụng nó ở bên trong một function khác.
+
+### 9.5 Definitions and uses
+
+Bạn sẽ phải định nghĩa một function trước khi gọi nó lần đầu tiên.
+
+### 9.6 Flow of execution
+
+Các câu lệnh trong function sẽ được execute từ trên xuống dưới.
+
+### 9.7 Parameters and arguments
+
+Một số function có thể yêu cầu arguments. Các arguments được gán vào biến được gọi là Parameters.
+
+``` python
+def print_twice(bruce):
+    print(bruce)
+    print(bruce)
+
+#sample
+
+>>> print_twice('Spam')
+    Spam
+    Spam
+>>> print_twice(17)
+    17
+    17
+```
+
+Bạn cũng có thể sử dụng một biến như là một argument:
+
+``` python
+>>> michael = 'Eric, the half a bee.'
+>>> print_twice(michael)
+Eric, the half a bee.
+Eric, the half a bee.
+```
+
+### 9.8 Fruitful functions and void functions
+
+Các functions trả về giá trị được gọi là fruitful functions. Các functions không trả về giá trị được gọi là void functions.
+
+Nếu bạn sử dụng script, khi bạn gọi function, nó sẽ không tự lưu lại kết quả.
+
+Đối với void, nó sẽ không trả về giá trị, vì thế bạn sẽ không thể gán giá trị đó vào biến.
+
+Để trả về giá trị, ta sử dụng câu lệnh `return`.
+
+``` python
+def addtwo(a, b):
+    added = a + b
+    return added
+```
